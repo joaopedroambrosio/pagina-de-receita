@@ -1,0 +1,268 @@
+@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;700&family=Young+Serif&display=swap");
+
+:root {
+    --cacau: #2b1a16;
+    --chocolate: #5a3a2e;
+    --framboesa: #b03a5b;
+    --framboesa-clara: #f6e3e8;
+    --papel: #fdfbfa;
+    --linha: #eadfdb;
+    --texto: #3a2a26;
+    --texto-suave: #7a6660;
+
+    --fonte-titulo: "Young Serif", Georgia, serif;
+    --fonte-corpo: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+    --espaco: clamp(1.5rem, 5vw, 3.5rem);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--cacau);
+    color: var(--texto);
+    font-family: var(--fonte-corpo);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    padding: 2.5rem 1rem 0;
+}
+
+/* ---------- Cartão principal ---------- */
+
+#page {
+    max-width: 980px;
+    margin: 0 auto;
+    background: var(--papel);
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+main > img {
+    display: block;
+    width: 100%;
+    height: clamp(220px, 38vw, 420px);
+    object-fit: cover;
+}
+
+/* ---------- Título ---------- */
+
+#titulo {
+    padding: var(--espaco) var(--espaco) 2.5rem;
+}
+
+#titulo h1 {
+    font-family: var(--fonte-titulo);
+    font-weight: 400;
+    font-size: clamp(2rem, 6vw, 3.4rem);
+    line-height: 1.1;
+    color: var(--cacau);
+    max-width: 20ch;
+    margin-bottom: 0.75rem;
+}
+
+#titulo p {
+    max-width: 38rem;
+    color: var(--texto-suave);
+    font-size: 1.15rem;
+}
+
+#titulo br {
+    display: none;
+}
+
+/* ---------- Duas colunas: ingredientes | preparo ---------- */
+
+article {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+    padding: 0 var(--espaco) var(--espaco);
+}
+
+h2 {
+    font-family: var(--fonte-titulo);
+    font-weight: 400;
+    font-size: 1.6rem;
+    color: var(--cacau);
+    line-height: 1.2;
+    padding-bottom: 0.6rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 2px solid var(--framboesa);
+}
+
+h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--framboesa);
+    margin: 1.75rem 0 0.5rem;
+}
+
+/* ---------- Ingredientes ---------- */
+
+#ingredientes {
+    background: var(--framboesa-clara);
+    border-radius: 14px;
+    padding: 1.75rem;
+}
+
+#ingredientes h2 {
+    border-bottom-color: var(--chocolate);
+}
+
+#ingredientes ul {
+    list-style: none;
+}
+
+#ingredientes li {
+    position: relative;
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    border-bottom: 1px solid rgba(90, 58, 46, 0.15);
+    font-size: 0.98rem;
+}
+
+#ingredientes li:last-child {
+    border-bottom: 0;
+}
+
+#ingredientes li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 1.05rem;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    background: var(--framboesa);
+}
+
+/* ---------- Modo de preparo ---------- */
+
+.infos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.infos p {
+    border: 1px solid var(--linha);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    line-height: 1.3;
+    color: var(--texto-suave);
+}
+
+.infos strong {
+    display: block;
+    margin-top: 0.25rem;
+    font-family: var(--fonte-titulo);
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: var(--cacau);
+}
+
+#modo-de-preparo ol {
+    list-style: none;
+    counter-reset: passo;
+}
+
+#modo-de-preparo li {
+    position: relative;
+    counter-increment: passo;
+    padding: 0 0 1.5rem 3.25rem;
+    max-width: 38rem;
+}
+
+/* linha que liga um passo ao próximo */
+#modo-de-preparo li::after {
+    content: "";
+    position: absolute;
+    left: 1.05rem;
+    top: 2.5rem;
+    bottom: 0.4rem;
+    width: 2px;
+    background: var(--linha);
+}
+
+#modo-de-preparo li:last-child::after {
+    display: none;
+}
+
+#modo-de-preparo li::before {
+    content: counter(passo);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 50%;
+    background: var(--chocolate);
+    color: var(--papel);
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: grid;
+    place-items: center;
+}
+
+h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--cacau);
+    line-height: 1.2;
+    margin: 0.35rem 0 0.25rem;
+}
+
+/* ---------- Rodapé ---------- */
+
+footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 2rem 1rem 2.5rem;
+    text-align: center;
+    color: #cdb9b2;
+    font-size: 0.9rem;
+}
+
+footer span {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.8rem;
+    color: #a08b84;
+}
+
+/* ---------- Telas pequenas ---------- */
+
+@media (max-width: 760px) {
+    body {
+        padding-top: 1rem;
+    }
+
+    article {
+        grid-template-columns: 1fr;
+    }
+
+    .infos {
+        grid-template-columns: 1fr;
+    }
+
+    .infos p {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+    }
+
+    .infos br {
+        display: none;
+    }
+
+    .infos strong {
+        margin: 0;
+    }
+}
