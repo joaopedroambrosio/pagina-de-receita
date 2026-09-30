@@ -1,2 +1,2 @@
-# P-gina-de-Receita
+# Pagina-de-Receita
 Página de receita desenvolvida em HTML e estilizada com CSS 
